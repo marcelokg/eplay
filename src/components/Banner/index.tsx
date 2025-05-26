@@ -1,24 +1,19 @@
-import { useEffect, useState } from 'react'
+//Aqui será feito a troca do fetch pelo useGetFeaturedGameQuery
+//Ao invés de trocar game por data, eu posso usar data: game para fazer essa troca automatica
+
 import Button from '../Button'
 import Tag from '../Tag'
 import { Precos, Titulo, Imagem } from './syles'
-import type { Game } from '../../pages/Home'
 import { formataPreco } from '../ProductsList'
+import { useGetFeaturedGameQuery } from '../../services/api'
 
 const Banner = () => {
-  const [game, setGame] = useState<Game>()
+  const { data: game } = useGetFeaturedGameQuery()
 
-  useEffect(() => {
-      fetch('https://fake-api-tau.vercel.app/api/eplay/destaque')
-        .then((res) => res.json())
-        .then((res) => setGame(res))
-    }, [])
-
-  if (!game)
-    return <h3>Carregando...</h3>
+  if (!game) return <h3>Carregando...</h3>
 
   return (
-    <Imagem style={{backgroundImage: `url(${game.media.cover})`}}>
+    <Imagem style={{ backgroundImage: `url(${game.media.cover})` }}>
       <div className="containerBanner">
         <Tag style={{ position: 'absolute', bottom: '516px' }} size="big">
           Destaque do dia
@@ -28,7 +23,11 @@ const Banner = () => {
           De <span>{formataPreco(game.prices.old)}</span> <br />
           por apenas {formataPreco(game.prices.current)}
         </Precos>
-        <Button type="link" to={`/product/${game.id}`} title="Clique aqui para aproveitar essa promoção!">
+        <Button
+          type="link"
+          to={`/product/${game.id}`}
+          title="Clique aqui para aproveitar essa promoção!"
+        >
           Aproveitar
         </Button>
       </div>

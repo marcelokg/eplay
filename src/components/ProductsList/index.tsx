@@ -6,6 +6,7 @@ export type Props = {
   title: string
   background: 'gray' | 'black'
   games: Game[]
+  id?: string
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -16,7 +17,7 @@ export const formataPreco = (preco = 0) => {
   }).format(preco)
 }
 
-const ProductsList = ({ title, background, games }: Props) => {
+const ProductsList = ({ title, background, games, id }: Props) => {
   const getGameTags = (game: Game) => {
     const tags = []
 
@@ -36,7 +37,7 @@ const ProductsList = ({ title, background, games }: Props) => {
   }
 
   return (
-    <ContainerCards background={background}>
+    <ContainerCards id={id} background={background}>
       <div className="container">
         <h2>{title}</h2>
         <List>

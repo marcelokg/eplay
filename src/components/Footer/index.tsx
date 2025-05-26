@@ -1,3 +1,8 @@
+//É necessario instalar um pato para que o react-router-dom reconheça os #
+// npm install --save react-router-hash-link
+//Vai ser preciso instlar outro pacote para o typescript
+//npm install --save-dev @types/react-router-hash-link
+
 import { TitleSection } from '../ProductsList/styles'
 import { ContainerFooter, FooterSection, Link, Links } from './styles'
 
@@ -10,19 +15,19 @@ const Footer = () => (
         <TitleSection>Categorias</TitleSection>
         <Links>
           <li>
-            <Link>Ação</Link>
+            <Link to='/categories#action'>Ação</Link>
           </li>
           <li>
-            <Link>Aventura</Link>
+            <Link to="/categories#rpg">RPG</Link>
           </li>
           <li>
-            <Link>Simulação</Link>
+            <Link to="/categories#simulation">Simulação</Link>
           </li>
           <li>
-            <Link>FPS</Link>
+            <Link to="/categories#sports">Esportes</Link>
           </li>
           <li>
-            <Link>RPG</Link>
+            <Link to="/categoriesfight">Luta</Link>
           </li>
         </Links>
       </FooterSection>
@@ -30,13 +35,10 @@ const Footer = () => (
         <TitleSection>Acesso Rápido</TitleSection>
         <Links>
           <li>
-            <Link>Novidades</Link>
+            <Link to="/#on-sale">Promoções</Link>
           </li>
           <li>
-            <Link>Promoções</Link>
-          </li>
-          <li>
-            <Link>Em Breve</Link>
+            <Link to="/#coming-soon">Em Breve</Link>
           </li>
         </Links>
       </FooterSection>
