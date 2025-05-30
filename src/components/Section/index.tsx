@@ -1,5 +1,5 @@
 import type { JSX } from 'react'
-import { ContainerCards, TitleSection } from './styles'
+import * as Styles from './styles'
 
 export type Props = {
   title: string
@@ -8,11 +8,11 @@ export type Props = {
 }
 
 const Section = ({ title, background, children }: Props) => (
-  <ContainerCards background={background}>
+  <Styles.ContainerCards background={background}>
     <div className="container">
-      <TitleSection>{title}</TitleSection>
+      <Styles.TitleSection>{title}</Styles.TitleSection>
       {children}
     </div>
-  </ContainerCards>
+  </Styles.ContainerCards>
 )
 export default Section

@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { cores } from "../../styles";
-import { TagContainer } from "../Tag/styles";
-import { ButtonContainer } from "../Button/styles";
+import styled from 'styled-components'
+import { colors } from '../../styles'
+import { TagContainer } from '../Tag/styles'
+import { ButtonContainer } from '../Button/styles'
 import fechar from '../../assets/images/close-icon.png'
 
 export const Overlay = styled.div`
@@ -23,74 +23,81 @@ export const CartContainer = styled.div`
   justify-content: flex-end;
   z-index: 1;
 
-  &.is-open{
+  &.is-open {
     display: flex;
   }
 `
 export const Sidebar = styled.aside`
-  background-color: ${cores.cinza};
+  background-color: ${colors.gray};
   z-index: 1;
   padding: 40px 16px 0 16px;
   max-width: 360px;
   width: 100%;
 
-  ${ButtonContainer}{
+  ${ButtonContainer} {
     max-width: 100%;
     width: 100%;
+  }
+
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.white};
+    text-align: center;
   }
 `
 export const Prices = styled.p`
   font-weight: bold;
   font-size: 14px;
-  color: ${cores.branco};
+  color: ${colors.white};
   margin-bottom: 24px;
 
-  span{
+  span {
     display: block;
     font-size: 12px;
-    color: ${cores.cinzaClaro};
+    color: ${colors.lightGray};
   }
 `
 export const Quantity = styled.p`
   font-weight: bold;
   font-size: 16px;
-  color: ${cores.branco};
+  color: ${colors.white};
   margin-top: 32px;
   margin-bottom: 16px;
 `
 export const CartItem = styled.li`
   display: flex;
-  border-bottom: 1px solid ${cores.cinzaClaro};
+  border-bottom: 1px solid ${colors.lightGray};
   padding: 8px 0;
   position: relative;
 
-  img{
+  img {
     height: 80px;
     width: 80px;
     object-fit: cover;
     margin-right: 24px;
   }
 
-  h3{
-    color: ${cores.branco};
+  h3 {
+    color: ${colors.white};
     font-weight: bold;
     font-size: 16px;
   }
 
-  span{
+  span {
     display: block;
-    color: ${cores.branco};
+    color: ${colors.white};
     font-weight: bold;
     font-size: 14px;
   }
 
-  ${TagContainer}{
+  ${TagContainer} {
     margin-left: 8px;
     margin-top: 8px;
     margin-bottom: 16px;
   }
 
-  button{
+  button {
     background-image: url(${fechar});
     width: 16px;
     height: 16px;

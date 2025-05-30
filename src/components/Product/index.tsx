@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Tag from '../Tag'
-import { CardContainer, CardDescricao, CardTitulo, Infos } from './style'
+import * as Styles from './style'
 
 export type Props = {
   title: string
@@ -53,24 +53,29 @@ const Product = ({ title, category, system, description, infos, image, id }: Pro
     }
   }, [])
 
-  const getDescricao = (descricao: string) => {
-    if(descricao.length > 95) return descricao.slice(0, 92) + '...'
-    return descricao
+  const getDescription = (text: string) => {
+    if (text.length > 95) return text.slice(0, 92) + '...'
+    return text
   }
 
   return (
-    <CardContainer to={`/product/${id}`} ref={cardRef} className="product-card">
+    <Styles.CardContainer
+      title={`Clique aqui para saber mais do jogo ${title}`}
+      to={`/product/${id}`}
+      ref={cardRef}
+      className="product-card"
+    >
       <img src={image} alt={title} />
-      <Infos>
+      <Styles.Infos>
         {infos.map((info) => (
           <Tag key={info}>{info}</Tag>
         ))}
-      </Infos>
-      <CardTitulo>{title}</CardTitulo>
+      </Styles.Infos>
+      <Styles.CardTitle>{title}</Styles.CardTitle>
       <Tag>{category}</Tag>
       <Tag>{system}</Tag>
-      <CardDescricao>{getDescricao(description)}</CardDescricao>
-    </CardContainer>
+      <Styles.CardDescription>{getDescription(description)}</Styles.CardDescription>
+    </Styles.CardContainer>
   )
 }
 export default Product

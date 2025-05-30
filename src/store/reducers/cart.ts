@@ -1,7 +1,6 @@
 //Depois de configurar o reducer, é necessário configurar o App.tsx
 
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
-import type { Game } from "../../pages/Home"
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 type CartState = {
   items: Game[]
@@ -10,7 +9,7 @@ type CartState = {
 
 const initialState: CartState = {
   items: [],
-  isOpen: false
+  isOpen: false,
 }
 
 const cartSlice = createSlice({
@@ -20,7 +19,7 @@ const cartSlice = createSlice({
     add: (state, action: PayloadAction<Game>) => {
       const game = state.items.find((item) => item.id === action.payload.id)
 
-      if(!game){
+      if (!game) {
         state.items.push(action.payload)
       } else {
         alert('O jogo ja está no carrinho')
@@ -29,14 +28,17 @@ const cartSlice = createSlice({
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload)
     },
-    open: (state) =>{
+    open: (state) => {
       state.isOpen = true
     },
     close: (state) => {
       state.isOpen = false
-    }
-  }
+    },
+    clear: (state) => {
+      state.items = []
+    },
+  },
 })
 
-export const { add, open, close, remove } = cartSlice.actions
+export const { add, open, close, remove, clear } = cartSlice.actions
 export default cartSlice.reducer

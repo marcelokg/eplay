@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
-export const Imagem = styled.div`
+export const Image = styled.div`
   width: 100%;
   height: 560px;
   display: flex;
@@ -12,7 +12,7 @@ export const Imagem = styled.div`
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.1);
   position: relative;
-  color: ${cores.branco};
+  color: ${colors.white};
   overflow: hidden;
   filter: saturate(0.4) brightness(0.5);
   transition: filter 0.5s ease-in-out;
@@ -21,7 +21,7 @@ export const Imagem = styled.div`
     opacity: 0.7;
   }
 
-  &::after{
+  &::after {
     position: absolute;
     top: 0;
     left: 0;
@@ -53,7 +53,7 @@ export const Imagem = styled.div`
   }
 `
 
-export const Titulo = styled.h2`
+export const Title = styled.h2`
   font-size: 30px;
   max-width: 450px;
   margin-bottom: 10px;
@@ -61,7 +61,7 @@ export const Titulo = styled.h2`
   z-index: 11;
 `
 
-export const Precos = styled.p`
+export const Prices = styled.p`
   font-size: 20px;
   text-align: left;
   z-index: 11;

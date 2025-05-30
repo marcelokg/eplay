@@ -3,26 +3,29 @@
 
 import Button from '../Button'
 import Tag from '../Tag'
-import { Precos, Titulo, Imagem } from './syles'
-import { formataPreco } from '../ProductsList'
+import Loader from '../Loader'
+
+import { parseToBrl } from '../../utils'
 import { useGetFeaturedGameQuery } from '../../services/api'
+
+import * as Styles from './syles'
 
 const Banner = () => {
   const { data: game } = useGetFeaturedGameQuery()
 
-  if (!game) return <h3>Carregando...</h3>
+  if (!game) return <Loader />
 
   return (
-    <Imagem style={{ backgroundImage: `url(${game.media.cover})` }}>
+    <Styles.Image style={{ backgroundImage: `url(${game.media.cover})` }}>
       <div className="containerBanner">
         <Tag style={{ position: 'absolute', bottom: '516px' }} size="big">
           Destaque do dia
         </Tag>
-        <Titulo>{game.name}</Titulo>
-        <Precos>
-          De <span>{formataPreco(game.prices.old)}</span> <br />
-          por apenas {formataPreco(game.prices.current)}
-        </Precos>
+        <Styles.Title>{game.name}</Styles.Title>
+        <Styles.Prices>
+          De <span>{parseToBrl(game.prices.old)}</span> <br />
+          por apenas {parseToBrl(game.prices.current)}
+        </Styles.Prices>
         <Button
           type="link"
           to={`/product/${game.id}`}
@@ -31,7 +34,7 @@ const Banner = () => {
           Aproveitar
         </Button>
       </div>
-    </Imagem>
+    </Styles.Image>
   )
 }
 export default Banner
